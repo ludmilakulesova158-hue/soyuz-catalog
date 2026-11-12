@@ -218,7 +218,7 @@ async function main() {
     .map(o => ({
       id: o.id, type: o.type, cat: o.cat, title: o.title, price: o.price,
       addr: o.addr, district: o.district, city: o.city, lat: o.lat, lng: o.lng,
-      rooms: o.rooms, studio: o.studio, area: o.area, floor: o.floor, floors: o.floors,
+      rooms: o.rooms, studio: o.studio, area: o.area, ak: o.area_kitchen, floor: o.floor, floors: o.floors,
       renov: o.renov, ph: o.photos[0] || '', upd: o.updated,
     }))
     .sort((a, b) => (a.type === b.type ? (b.upd || '').localeCompare(a.upd || '') : (a.type === 'продажа' ? -1 : 1)));
