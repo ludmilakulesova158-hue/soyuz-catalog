@@ -176,23 +176,46 @@ function parseOffer(attrs, body) {
 // ---------- сборка ----------
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+// joywork.ru не всегда доступен с GitHub-раннеров (блокировка дата-центров),
+// поэтому пробуем прямой URL, затем Google-прокси, затем allorigins.
+function feedSources(url) {
+  const list = [url];
+  try {
+    const u = new URL(url);
+    const host = u.hostname.replace(/\./g, '-');
+    const proxy = `https://${host}.translate.goog${u.pathname}${u.search}?_x_tr_sl=auto&_x_tr_tl=ru&_x_tr_hl=ru`;
+    if (!list.includes(proxy)) list.push(proxy);
+    const ao = `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`;
+    if (!list.includes(ao)) list.push(ao);
+  } catch (e) { /* прямые источники уже в списке */ }
+  return list;
+}
+
+function looksLikeFeed(text) {
+  return text && text.length > 1000 && text.includes('<offer');
+}
+
 async function fetchFeed(url) {
-  const delays = [0, 5000, 15000, 30000];
+  const sources = feedSources(url);
+  const delays = [0, 3000, 8000];
   let lastErr;
-  for (let i = 0; i < delays.length; i++) {
-    if (delays[i]) await sleep(delays[i]);
-    try {
-      const res = await fetch(url, {
-        headers: { 'user-agent': 'soyuz-catalog-bot/1.0' },
-        signal: AbortSignal.timeout(30000),
-      });
-      if (!res.ok) throw new Error(`feed HTTP ${res.status}`);
-      const text = await res.text();
-      if (!text || text.length < 1000) throw new Error(`feed too small (${text.length} bytes)`);
-      return text;
-    } catch (e) {
-      lastErr = e;
-      console.log(`feed attempt ${i + 1}/${delays.length} failed: ${e.message}`);
+  for (const src of sources) {
+    for (let i = 0; i < delays.length; i++) {
+      if (delays[i]) await sleep(delays[i]);
+      try {
+        const res = await fetch(src, {
+          headers: { 'user-agent': 'soyuz-catalog-bot/1.0' },
+          signal: AbortSignal.timeout(45000),
+        });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const text = await res.text();
+        if (!looksLikeFeed(text)) throw new Error(`not a feed (${text.length} bytes)`);
+        console.log(`feed via: ${src}`);
+        return text;
+      } catch (e) {
+        lastErr = e;
+        console.log(`feed attempt (${src.slice(0, 60)}…) ${i + 1}/${delays.length} failed: ${e.message}`);
+      }
     }
   }
   throw lastErr || new Error('feed fetch failed');
