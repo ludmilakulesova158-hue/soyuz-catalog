@@ -2,7 +2,7 @@ name: update-catalog
 
 on:
   schedule:
-    - cron: "*/30 * * * *"
+    - cron: "*/5 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -15,26 +15,41 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 355
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
 
-      - name: Convert feed
+      - name: Refresh loop (~5h40m, convert every 5 min)
         env:
           FEED_URL: https://joywork.ru/feeds/14794.xml
-        run: node scripts/convert.mjs
-
-      - name: Commit if changed
         run: |
           git config user.name "catalog-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A data
-          if git diff --cached --quiet; then
-            echo "No changes in data"
-          else
-            git commit -m "catalog update $(date -u '+%Y-%m-%dT%H:%MZ')"
-            git push
-          fi
+          start=$(date +%s)
+          for i in $(seq 1 68); do
+            echo "--- iteration $i $(date -u '+%Y-%m-%dT%H:%MZ')"
+            if node scripts/convert.mjs; then
+              git add -A data
+              if ! git diff --cached --quiet; then
+                git commit -m "catalog update $(date -u '+%Y-%m-%dT%H:%MZ')"
+                if ! git push; then
+                  git pull --rebase || true
+                  git push || echo "push failed, will retry next iteration"
+                fi
+              else
+                echo "no changes in data"
+              fi
+            else
+              echo "convert failed, retrying in 5 min"
+            fi
+            elapsed=$(( $(date +%s) - start ))
+            if [ "$elapsed" -gt 20000 ]; then
+              echo "runtime limit reached ($elapsed s), exiting"
+              break
+            fi
+            sleep 300
+          done

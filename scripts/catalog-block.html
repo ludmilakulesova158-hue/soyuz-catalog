@@ -1,0 +1,882 @@
+<header class="vbch">
+  <a class="vbch__brand" href="/">
+    <img class="vbch__logo" src="https://static.tildacdn.com/tila3538-3832-4631-b664-353239333639/logocr-alpha-192.webp" alt="АН Союз">
+    <span class="vbch__mark">Союзриелт<span class="vbch__mark-sub">Калуга</span></span>
+  </a>
+  <div class="vbch__right">
+    <a class="vbch__tel" href="tel:+74842401740">+7 4842 40-17-40</a>
+    <a class="vbch__cta" href="tel:+74842401740">Заказать звонок</a>
+  </div>
+</header>
+
+<section id="vb-cat-root" class="vb-ctl vb-cat" data-section-name="Каталог объектов">
+  <div class="vb-ctl__bg" aria-hidden="true"><span class="vb-ctl__bg-img"></span></div>
+  <div class="vb-ctl__inner">
+    <div class="vb-ctl__head">
+      <h1 class="vb-ctl__title">Каталог <span class="vb-ctl__title-accent">объектов</span></h1>
+      <p class="vb-cat__meta" id="vb-cat-meta">Загружаем объекты…</p>
+      <p class="vb-cat__stale" id="vb-cat-stale" hidden></p>
+    </div>
+
+    <div class="vb-ctl__tabs" role="group" aria-label="Разделы каталога">
+      <button class="vb-ctl__tab" type="button" data-tab="sale" aria-pressed="false">
+        <span class="vb-ctl__tab-name">Вторичная недвижимость</span>
+        <svg class="vb-ctl__tab-check" width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 5 5L20 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="vb-ctl__tab" type="button" data-tab="rent" aria-pressed="false">
+        <span class="vb-ctl__tab-name">Аренда</span>
+        <svg class="vb-ctl__tab-check" width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 5 5L20 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="vb-ctl__tab" type="button" data-tab="new" aria-pressed="false">
+        <span class="vb-ctl__tab-name">Новостройки</span>
+        <svg class="vb-ctl__tab-check" width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 5 5L20 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="vb-ctl__tab" type="button" data-tab="country" aria-pressed="false">
+        <span class="vb-ctl__tab-name">Загородная недвижимость</span>
+        <svg class="vb-ctl__tab-check" width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 5 5L20 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+
+    <div class="vb-ctl__filter">
+      <form class="vb-ctl__form t-form-off" id="vb-ctl-form" novalidate>
+        <div class="vb-ctl__fields">
+          <div class="vb-ctl__field">
+            <span class="vb-ctl__label">Тип объекта</span>
+            <div class="vb-ctl__control vb-ctl__control--select">
+              <select class="vb-ctl__select" id="vb-ctl-type" aria-label="Тип объекта"></select>
+              <svg class="vb-ctl__chev" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m7 10 5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+          <div class="vb-ctl__field">
+            <span class="vb-ctl__label vb-ctl__label--split"><span class="vb-ctl__label-text">Цена, ₽</span><span class="vb-ctl__price-note" aria-live="polite"></span></span>
+            <div class="vb-ctl__control">
+              <div class="vb-ctl__values"><span data-out="price-from"></span><span data-out="price-to"></span></div>
+              <div class="vb-ctl__slider" data-slider="price" data-min="0" data-max="50000000" data-step="500000" data-from="0" data-to="50000000">
+                <div class="vb-ctl__rail"><span class="vb-ctl__bar"></span></div>
+                <input class="vb-ctl__input vb-ctl__input--min" type="range" min="0" max="50000000" step="500000" value="0" aria-label="Цена от, рублей">
+                <input class="vb-ctl__input vb-ctl__input--max" type="range" min="0" max="50000000" step="500000" value="50000000" aria-label="Цена до, рублей">
+              </div>
+            </div>
+          </div>
+          <div class="vb-ctl__field">
+            <span class="vb-ctl__label">Количество комнат</span>
+            <div class="vb-ctl__control vb-ctl__control--pills" role="group" aria-label="Количество комнат">
+              <button class="vb-ctl__pill" type="button" data-rooms="studio" aria-pressed="false">Студия</button>
+              <button class="vb-ctl__pill" type="button" data-rooms="1" aria-pressed="false">1</button>
+              <button class="vb-ctl__pill" type="button" data-rooms="2" aria-pressed="false">2</button>
+              <button class="vb-ctl__pill" type="button" data-rooms="3" aria-pressed="false">3</button>
+              <button class="vb-ctl__pill" type="button" data-rooms="4" aria-pressed="false">4+</button>
+            </div>
+          </div>
+          <div class="vb-ctl__field">
+            <span class="vb-ctl__label">Площадь, м²</span>
+            <div class="vb-ctl__control">
+              <div class="vb-ctl__values"><span data-out="area-from"></span><span data-out="area-to"></span></div>
+              <div class="vb-ctl__slider" data-slider="area" data-min="0" data-max="500" data-step="5" data-from="0" data-to="500">
+                <div class="vb-ctl__rail"><span class="vb-ctl__bar"></span></div>
+                <input class="vb-ctl__input vb-ctl__input--min" type="range" min="0" max="500" step="5" value="0" aria-label="Площадь от, квадратных метров">
+                <input class="vb-ctl__input vb-ctl__input--max" type="range" min="0" max="500" step="5" value="500" aria-label="Площадь до, квадратных метров">
+              </div>
+            </div>
+          </div>
+          <div class="vb-ctl__field">
+            <span class="vb-ctl__label">Площадь кухни, м²</span>
+            <div class="vb-ctl__control">
+              <div class="vb-ctl__values"><span data-out="kitchen-from"></span><span data-out="kitchen-to"></span></div>
+              <div class="vb-ctl__slider" data-slider="kitchen" data-min="0" data-max="40" data-step="1" data-from="0" data-to="40">
+                <div class="vb-ctl__rail"><span class="vb-ctl__bar"></span></div>
+                <input class="vb-ctl__input vb-ctl__input--min" type="range" min="0" max="40" step="1" value="0" aria-label="Площадь кухни от, квадратных метров">
+                <input class="vb-ctl__input vb-ctl__input--max" type="range" min="0" max="40" step="1" value="40" aria-label="Площадь кухни до, квадратных метров">
+              </div>
+            </div>
+          </div>
+          <div class="vb-ctl__field">
+            <span class="vb-ctl__label">Этаж</span>
+            <div class="vb-ctl__control">
+              <div class="vb-ctl__values"><span data-out="floor-from"></span><span data-out="floor-to"></span></div>
+              <div class="vb-ctl__slider" data-slider="floor" data-min="1" data-max="25" data-step="1" data-from="1" data-to="25">
+                <div class="vb-ctl__rail"><span class="vb-ctl__bar"></span></div>
+                <input class="vb-ctl__input vb-ctl__input--min" type="range" min="1" max="25" step="1" value="1" aria-label="Этаж от">
+                <input class="vb-ctl__input vb-ctl__input--max" type="range" min="1" max="25" step="1" value="25" aria-label="Этаж до">
+              </div>
+            </div>
+          </div>
+          <div class="vb-ctl__field">
+            <span class="vb-ctl__label">Ремонт</span>
+            <div class="vb-ctl__control vb-ctl__control--select">
+              <select class="vb-ctl__select" id="vb-ctl-repair" aria-label="Ремонт"></select>
+              <svg class="vb-ctl__chev" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m7 10 5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="vb-ctl__actions">
+          <button class="vb-ctl__reset" type="button" id="vb-ctl-reset-top">Сбросить фильтры</button>
+          <button class="vb-ctl__submit" type="submit"><span class="t-btnflex__text">Показать объекты</span></button>
+        </div>
+      </form>
+    </div>
+
+    <div class="vb-cat__bar">
+      <p class="vb-ctl__count" id="vb-ctl-count"></p>
+      <label class="vb-cat__sort">
+        <span>Сортировка</span>
+        <select id="vb-cat-sort">
+          <option value="fresh">Свежие</option>
+          <option value="asc">Дешевле</option>
+          <option value="desc">Дороже</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="vb-grid" id="vb-grid" aria-live="polite"></div>
+
+    <div class="vb-cat__more-wrap"><button class="vb-cat__more" id="vb-cat-more" hidden>Показать ещё</button></div>
+
+    <div class="vb-ctl__empty" id="vb-ctl-empty" hidden>
+      <p class="vb-ctl__empty-text" id="vb-ctl-empty-text">По этим условиям объектов не найдено. Попробуйте изменить фильтры.</p>
+      <div class="vb-ctl__empty-actions">
+        <button class="vb-ctl__empty-btn" type="button" id="vb-ctl-empty-reset">Сбросить фильтры</button>
+      </div>
+    </div>
+
+    <div class="vb-cat__error" id="vb-cat-error" hidden>
+      <p>Не удалось загрузить каталог. Проверьте интернет и попробуйте снова.</p>
+      <button class="vb-ctl__empty-btn" type="button" id="vb-cat-retry">Повторить</button>
+    </div>
+
+    <p class="vb-cat__draftnote">Черновая страница для согласования — живая главная пока не изменена.</p>
+  </div>
+</section>
+
+<div class="vb-modal" id="vb-modal" hidden>
+  <div class="vb-modal__backdrop" data-close></div>
+  <div class="vb-modal__box" role="dialog" aria-modal="true" aria-label="Объект">
+    <button class="vb-modal__x" type="button" data-close aria-label="Закрыть">✕</button>
+    <div class="vb-modal__body" id="vb-modal-body"></div>
+  </div>
+</div>
+
+<div class="vb-lightbox" id="vb-lightbox" hidden>
+  <div class="vb-lightbox__bg" data-lb-close></div>
+  <img class="vb-lightbox__img" id="vb-lightbox-img" alt="">
+  <button class="vb-lightbox__x" type="button" data-lb-close aria-label="Закрыть">✕</button>
+  <button class="vb-lightbox__nav vb-lightbox__nav--prev" type="button" aria-label="Предыдущее фото">‹</button>
+  <button class="vb-lightbox__nav vb-lightbox__nav--next" type="button" aria-label="Следующее фото">›</button>
+  <div class="vb-lightbox__count" id="vb-lightbox-count"></div>
+</div>
+
+<style>
+.vbch,.vbch *{box-sizing:border-box}
+.vbch{position:relative;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px 24px;background:#140D0E;font-family:var(--t-text-font)}
+.vbch__brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.vbch__logo{width:34px;height:34px;display:block}
+.vbch__mark{font-family:var(--t-headline-font);font-size:21px;line-height:1;letter-spacing:.05em;color:#fff;text-transform:uppercase}
+.vbch__mark-sub{display:block;margin-top:2px;font-family:var(--t-text-font);font-size:10.5px;letter-spacing:.28em;color:rgba(255,255,255,.55);text-transform:uppercase}
+.vbch__right{display:flex;align-items:center;gap:14px}
+.vbch__tel{color:#fff;font-size:15px;font-weight:600;text-decoration:none;white-space:nowrap}
+.vbch__cta{display:inline-flex;align-items:center;padding:9px 18px;border-radius:999px;background:#B71A49;color:#fff;font-size:13.5px;font-weight:600;text-decoration:none;transition:background-color .15s ease}
+.vbch__cta:hover{background:#99123C;color:#fff}
+
+.vb-cat,.vb-cat *{box-sizing:border-box}
+.vb-cat{--ctl-ink:#140D0E;--ctl-muted:#6E6668;--ctl-line:rgba(20,13,14,.12);--ctl-burg:#B71A49;--ctl-burgd:#99123C}
+.vb-cat__meta{margin:12px 0 0;font-size:15px;line-height:1.5;color:var(--ctl-muted)}
+.vb-cat__stale{margin:6px 0 0;font-size:13px;line-height:1.4;color:#8A8284}
+.vb-cat__bar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:26px 0 16px}
+.vb-cat__bar .vb-ctl__count{margin:0}
+.vb-cat__sort{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ctl-muted)}
+.vb-cat__sort select{height:42px;padding:0 30px 0 12px;border:1px solid var(--ctl-line);border-radius:8px;background:#fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='m7 10 5 5 5-5' stroke='%23140D0E' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") right 10px center no-repeat;color:var(--ctl-ink);font-family:var(--t-text-font);font-size:14px;appearance:none;-webkit-appearance:none;outline:none;cursor:pointer}
+.vb-cat__sort select:focus{border-color:var(--ctl-burg)}
+
+html body .vb-ctl__values{min-width:0}
+html body .vb-ctl__num{display:flex;align-items:center;min-width:0;padding:2px 8px 2px 6px;gap:4px}
+html body .vb-ctl__num .vb-ctl__num-cap{flex:0 0 auto;font-size:11px;color:var(--ctl-muted)}
+html body .vb-ctl__num .vb-ctl__num-in{width:100%;min-width:0;flex:1 1 auto;height:24px;padding:0;border:1px solid rgba(20,13,14,.14);border-radius:6px;background:#fff;color:var(--ctl-ink);font-size:12px;line-height:1;text-align:center;letter-spacing:0;font-variant-numeric:tabular-nums;outline:none}
+html body .vb-ctl__num .vb-ctl__num-in:focus{border-color:var(--ctl-burg);box-shadow:0 0 0 2px rgba(183,26,73,.14)}
+html body .vb-ctl__num-unit{display:none!important}
+
+.vb-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.vb-card{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid var(--ctl-line);border-radius:12px;overflow:hidden;text-decoration:none;color:var(--ctl-ink);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.vb-card:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(20,13,14,.10);border-color:rgba(20,13,14,.2)}
+.vb-card__img{position:relative;aspect-ratio:4/3;background:#F0EDEB;overflow:hidden}
+.vb-card__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.vb-card__badge{position:absolute;top:12px;left:12px;z-index:2;padding:5px 10px;border-radius:6px;color:#fff;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.vb-card__badge--sale{background:#B71A49}
+.vb-card__badge--rent{background:#140D0E}
+.vb-card__body{display:flex;flex-direction:column;gap:6px;flex:1 1 auto;padding:14px 16px 16px}
+.vb-card__title{margin:0;font-size:16px;font-weight:600;line-height:1.3;color:var(--ctl-ink)}
+.vb-card__addr{font-size:13px;line-height:1.4;color:var(--ctl-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vb-card__meta{display:flex;flex-wrap:wrap;gap:4px 10px;font-size:13px;color:var(--ctl-muted)}
+.vb-card__meta span+span:before{content:'·';margin-right:10px;color:#C9C3C1}
+.vb-card__foot{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-top:auto;padding-top:10px;border-top:1px solid rgba(20,13,14,.08)}
+.vb-card__price{font-family:'Oswald','Arial Narrow',Arial,sans-serif;font-weight:400;font-size:22px;letter-spacing:.01em;font-variant-numeric:tabular-nums;color:var(--ctl-ink);white-space:nowrap}
+.vb-card__per{font-size:12.5px;color:var(--ctl-muted);white-space:nowrap}
+.vb-card__more-link{font-size:14px;font-weight:600;color:var(--ctl-burg);white-space:nowrap}
+.vb-card__more-link:hover{color:var(--ctl-burgd)}
+.vb-card--skel{pointer-events:none}
+.vb-card--skel .vb-card__img{animation:vbpulse 1.4s ease-in-out infinite}
+.vb-card--skel .vb-skel-line{height:12px;border-radius:6px;background:#F0EDEB;margin:6px 0;animation:vbpulse 1.4s ease-in-out infinite}
+@keyframes vbpulse{0%,100%{opacity:.55}50%{opacity:1}}
+.vb-cat__more-wrap{display:flex;justify-content:center;margin-top:26px}
+.vb-cat .vb-cat__more{border:1px solid var(--ctl-burg);border-radius:999px;background:#fff;color:var(--ctl-burg);padding:12px 26px;font-family:var(--t-text-font);font-size:14.5px;font-weight:600;cursor:pointer;transition:background-color .15s ease,color .15s ease}
+.vb-cat .vb-cat__more:hover{background:var(--ctl-burg);color:#fff}
+.vb-cat__error{margin:20px 0 0;padding:28px 24px;border:1px dashed rgba(183,26,73,.5);border-radius:12px;background:#FBF5F6;text-align:center}
+.vb-cat__error p{margin:0 0 14px;font-size:15.5px;color:var(--ctl-ink)}
+.vb-cat__draftnote{margin:34px 0 0;font-size:12.5px;color:#A8A1A3;text-align:center}
+
+.vb-modal,.vb-modal *{box-sizing:border-box}
+.vb-modal{position:fixed;inset:0;z-index:9990;display:flex;align-items:center;justify-content:center;padding:20px}
+.vb-modal[hidden]{display:none!important}
+.vb-modal__backdrop{position:absolute;inset:0;background:rgba(20,13,14,.55)}
+.vb-modal__box{position:relative;z-index:1;width:min(720px,100%);max-height:86vh;overflow:auto;background:#fff;border-radius:14px;box-shadow:0 24px 64px rgba(0,0,0,.3)}
+.vb-modal__x{position:absolute;top:12px;right:12px;z-index:2;width:36px;height:36px;border:0;border-radius:999px;background:rgba(255,255,255,.92);color:#140D0E;font-size:15px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.vb-modal__body{padding:0}
+.vb-modal__gal{display:flex;gap:8px;overflow-x:auto;padding:14px;background:#F5F3F2}
+.vb-modal__gal img{width:150px;height:110px;object-fit:cover;border-radius:8px;flex:0 0 auto;background:#E8E4E2}
+.vb-modal__info{padding:6px 20px 20px}
+.vb-modal__title{margin:6px 0 2px;font-size:19px;font-weight:700;line-height:1.3;color:#140D0E}
+.vb-modal__addr{font-size:13.5px;color:#6E6668}
+.vb-modal__price{margin:12px 0 2px;font-family:'Oswald','Arial Narrow',Arial,sans-serif;font-weight:400;font-size:28px;color:#140D0E;font-variant-numeric:tabular-nums}
+.vb-modal__meta{margin:8px 0 0;font-size:13.5px;color:#6E6668;line-height:1.7}
+.vb-modal__agent{display:flex;align-items:center;gap:12px;margin-top:16px;padding:12px;border:1px solid rgba(20,13,14,.12);border-radius:10px}
+.vb-modal__agent img{width:44px;height:44px;border-radius:999px;object-fit:cover;background:#E8E4E2}
+.vb-modal__agent-name{font-size:14.5px;font-weight:600;color:#140D0E}
+.vb-modal__agent-tel{font-size:13.5px;color:#B71A49;font-weight:600;text-decoration:none}
+.vb-modal__note{margin-top:14px;font-size:12.5px;color:#A8A1A3}
+
+.vb-lightbox,.vb-lightbox *{box-sizing:border-box}
+.vb-lightbox{position:fixed;inset:0;z-index:9991;display:flex;align-items:center;justify-content:center}
+.vb-lightbox[hidden]{display:none!important}
+.vb-lightbox__bg{position:absolute;inset:0;background:rgba(10,8,9,.94);cursor:zoom-out}
+.vb-lightbox__img{position:relative;z-index:1;max-width:92vw;max-height:86vh;object-fit:contain;display:block;user-select:none;-webkit-user-drag:none}
+.vb-lightbox__x{position:absolute;top:14px;right:14px;z-index:2;width:42px;height:42px;border:0;border-radius:999px;background:rgba(255,255,255,.92);color:#140D0E;font-size:16px;cursor:pointer}
+.vb-lightbox__nav{position:absolute;top:50%;z-index:2;transform:translateY(-50%);width:46px;height:46px;border:0;border-radius:999px;background:rgba(255,255,255,.9);color:#140D0E;font-size:22px;line-height:1;cursor:pointer;transition:opacity .15s ease,background-color .15s ease}
+.vb-lightbox__nav:hover{background:#fff}
+.vb-lightbox__nav--prev{left:16px}
+.vb-lightbox__nav--next{right:16px}
+.vb-lightbox__count{position:absolute;left:0;right:0;bottom:18px;z-index:2;text-align:center;color:rgba(255,255,255,.85);font-family:var(--t-text-font);font-size:13.5px;letter-spacing:.04em;font-variant-numeric:tabular-nums}
+@media (max-width:560px){.vb-lightbox__nav{width:40px;height:40px;font-size:19px}.vb-lightbox__nav--prev{left:8px}.vb-lightbox__nav--next{right:8px}.vb-lightbox__img{max-width:96vw;max-height:80vh}}
+
+.vb-ctl,.vb-ctl *{box-sizing:border-box}
+.vb-ctl input,.vb-ctl textarea,.vb-ctl select{font:inherit}
+.vb-ctl[hidden],.vb-ctl__empty[hidden]{display:none!important}
+.vb-ctl{--ctl-ink:#140D0E;--ctl-muted:#6E6668;--ctl-line:rgba(20,13,14,.12);--ctl-burg:#B71A49;--ctl-burgd:#99123C;position:relative;background:#FCFBFA;font-family:var(--t-text-font);color:var(--ctl-ink)}
+.vb-ctl__bg{position:absolute;top:0;left:0;right:0;height:clamp(380px,44vw,620px);overflow:hidden;pointer-events:none}
+.vb-ctl__bg-img{position:absolute;inset:0;background:url('https://static.tildacdn.com/tila3636-3837-4565-b532-663364626262/getfile.png') right top / cover no-repeat;opacity:.22;filter:grayscale(.55) brightness(1.12) contrast(.92)}
+.vb-ctl__bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(252,251,250,0) 0%,rgba(252,251,250,.28) 42%,rgba(252,251,250,.78) 78%,#FCFBFA 100%),linear-gradient(90deg,#FCFBFA 0%,rgba(252,251,250,.94) 26%,rgba(252,251,250,.62) 58%,rgba(252,251,250,.42) 100%)}
+.vb-ctl__inner{position:relative;z-index:1;max-width:1240px;margin:0 auto;padding:64px 24px 48px}
+.vb-ctl__head{max-width:760px;margin:0 0 24px}
+.vb-ctl__title{margin:0;font-family:var(--t-headline-font);font-size:clamp(32px,3.2vw,48px);line-height:.98;letter-spacing:.01em;font-weight:400;text-transform:uppercase;color:var(--ctl-ink);text-wrap:balance}
+.vb-ctl__title-accent{color:var(--ctl-burg)}
+.vb-ctl__tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+.vb-ctl__tab{appearance:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 20px;border:1px solid var(--ctl-ink);border-radius:10px;background:transparent;color:var(--ctl-ink);text-align:center;cursor:pointer;font-family:var(--t-headline-font);font-size:19px;line-height:1.05;letter-spacing:.02em;text-transform:uppercase;transition:background-color .18s ease,border-color .18s ease,color .18s ease,transform .18s ease}
+.vb-ctl__tab:hover{background:var(--ctl-ink);border-color:var(--ctl-ink);color:#fff;transform:translateY(-1px)}
+.vb-ctl__tab:focus-visible{outline:2px solid var(--ctl-burg);outline-offset:2px}
+.vb-ctl__tab--active{background:var(--ctl-burg);border-color:var(--ctl-burg);color:#fff}
+.vb-ctl__tab--active:hover{background:var(--ctl-burgd);border-color:var(--ctl-burgd)}
+.vb-ctl__tab-check{opacity:0;transition:opacity .15s ease;flex:0 0 auto}
+.vb-ctl__tab--active .vb-ctl__tab-check{opacity:1}
+html body .vb-ctl__tab{font-family:'Oswald','Arial Narrow',Arial,sans-serif;font-weight:400;letter-spacing:.03em}
+.vb-ctl__filter{margin:0 0 8px}
+.vb-ctl__fields{display:grid;grid-template-columns:1fr 1.55fr 1.7fr 1fr .95fr .85fr 1fr;gap:8px;align-items:end}
+.vb-ctl__field{display:flex;flex-direction:column;gap:7px;min-width:0}
+.vb-ctl__label{font-size:15px;line-height:1.3;color:var(--ctl-muted)}
+.vb-ctl__label--split{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.vb-ctl__price-note{font-size:12px;line-height:1.2;color:#8A8284;white-space:nowrap;font-variant-numeric:tabular-nums}
+.vb-ctl__control{background:#fff;border:1px solid var(--ctl-line);border-radius:10px;padding:11px 14px;min-height:72px;display:flex;flex-direction:column;justify-content:center;gap:7px;transition:border-color .15s ease}
+.vb-ctl__control:hover{border-color:rgba(20,13,14,.24)}
+.vb-ctl__values{display:flex;align-items:center;justify-content:space-between;gap:6px;font-size:13px;line-height:1.2;color:var(--ctl-muted);white-space:nowrap}
+html body .vb-ctl__num--money{display:flex;align-items:center;padding:0;gap:4px;min-width:0}
+html body .vb-ctl__num--money .vb-ctl__num-cap{flex:0 0 auto}
+html body .vb-ctl__num--money .vb-ctl__num-in{width:auto;min-width:0;flex:1 1 auto;height:24px;padding:2px 5px;border:1px solid rgba(20,13,14,.14);border-radius:6px;background:#fff;color:var(--ctl-ink);font-size:11.5px;line-height:1;text-align:center;font-variant-numeric:tabular-nums;outline:none}
+html body .vb-ctl__num--money .vb-ctl__num-in:focus{border-color:var(--ctl-burg);box-shadow:0 0 0 2px rgba(183,26,73,.14)}
+.vb-ctl__slider{position:relative;height:18px}
+.vb-ctl__rail{position:absolute;left:0;right:0;top:50%;height:3px;margin-top:-1.5px;border-radius:999px;background:#E5E1DF}
+.vb-ctl__bar{position:absolute;top:0;height:100%;border-radius:999px;background:var(--ctl-burg)}
+.vb-ctl__input{position:absolute;left:0;top:0;width:100%;height:18px;margin:0;padding:0;background:transparent;appearance:none;-webkit-appearance:none;pointer-events:none}
+.vb-ctl__input--min{z-index:2}
+.vb-ctl__input--max{z-index:3}
+.vb-ctl__input::-webkit-slider-runnable-track{height:18px;background:transparent;border:0}
+.vb-ctl__input::-webkit-slider-thumb{appearance:none;-webkit-appearance:none;width:14px;height:14px;margin-top:2px;border-radius:50%;background:#fff;border:2px solid var(--ctl-burg);box-shadow:0 1px 4px rgba(20,20,20,.2);cursor:pointer;pointer-events:auto}
+.vb-ctl__input::-moz-range-track{height:18px;background:transparent;border:0}
+.vb-ctl__input::-moz-range-thumb{width:12px;height:12px;border-radius:50%;background:#fff;border:2px solid var(--ctl-burg);box-shadow:0 1px 4px rgba(20,20,20,.2);cursor:pointer;pointer-events:auto}
+.vb-ctl__input:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 3px rgba(183,26,73,.2)}
+.vb-ctl__control--pills{flex-direction:row;flex-wrap:wrap;align-content:center;gap:4px;padding:10px 12px}
+.vb-ctl__pill{appearance:none;border:0;background:#F5F3F2;color:var(--ctl-ink);padding:9px 10px;border-radius:999px;font-family:var(--t-text-font);font-size:13px;font-weight:500;line-height:1;cursor:pointer;transition:background-color .15s ease,color .15s ease}
+.vb-ctl__pill:hover{background:#ECE8E6}
+.vb-ctl__pill--active,
+.vb-ctl__pill--active:hover{background:var(--ctl-ink);color:#fff}
+@media (hover:none){
+  .vb-ctl__pill:hover{background:#F5F3F2;color:var(--ctl-ink)}
+  .vb-ctl__pill--active,
+  .vb-ctl__pill--active:hover{background:var(--ctl-ink);color:#fff}
+}
+.vb-ctl__control--select{position:relative;padding:0;min-height:72px}
+.vb-ctl__select{width:100%;height:70px;padding:0 34px 0 14px;border:0;border-radius:10px;background:transparent;color:var(--ctl-ink);font-family:var(--t-text-font);font-size:15px;appearance:none;-webkit-appearance:none;outline:none;cursor:pointer}
+.vb-ctl__select:focus{box-shadow:inset 0 0 0 1px var(--ctl-burg);border-radius:10px}
+.vb-ctl__chev{position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--ctl-ink);pointer-events:none}
+.vb-ctl__actions{display:flex;align-items:center;justify-content:flex-end;gap:10px;flex-wrap:wrap;margin-top:18px}
+.vb-ctl .vb-ctl__submit{flex:0 0 auto;height:48px;padding:0 30px;border:0;border-radius:999px;background:var(--ctl-burg);color:#fff;font-family:var(--t-text-font);font-size:14.5px;font-weight:600;cursor:pointer;transition:background-color .15s ease}
+.vb-ctl .vb-ctl__submit:hover{background:var(--ctl-burgd)}
+.vb-ctl .vb-ctl__reset{flex:0 0 auto;height:48px;padding:0 22px;border:1px solid rgba(20,13,14,.22);border-radius:999px;background:#fff;color:var(--ctl-ink);font-family:var(--t-text-font);font-size:14.5px;font-weight:600;cursor:pointer;transition:border-color .15s ease,background-color .15s ease,color .15s ease}
+.vb-ctl .vb-ctl__reset:hover{border-color:var(--ctl-ink);background:#FAF8F7}
+.vb-ctl__count{margin:4px 0 0;font-size:15px;line-height:1.4;color:var(--ctl-muted)}
+.vb-ctl__empty{margin:14px 0 0;padding:30px 24px;border:1px dashed rgba(20,13,14,.18);border-radius:12px;background:#FAF8F7;text-align:center}
+.vb-ctl__empty-text{margin:0 0 14px;font-size:16px;line-height:1.5;color:var(--ctl-muted)}
+.vb-ctl__empty-actions{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+.vb-ctl__empty-btn{border:1px solid var(--ctl-burg);border-radius:999px;background:#fff;color:var(--ctl-burg);padding:10px 18px;font-family:var(--t-text-font);font-size:14px;font-weight:600;cursor:pointer}
+.vb-ctl__empty-btn:hover{background:var(--ctl-burg);color:#fff}
+@media (min-width:901px) and (max-width:1000px){html body .vb-ctl__tab{font-size:15.5px;letter-spacing:.02em}}
+@media (max-width:1180px){.vb-ctl__fields{grid-template-columns:repeat(3,minmax(0,1fr))}.vb-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:960px){.vb-ctl__inner{padding:48px 18px 40px}.vb-ctl__fields{grid-template-columns:1fr 1fr}.vb-grid{grid-template-columns:1fr 1fr;gap:14px}.vbch{padding:11px 16px}.vbch__tel{font-size:13.5px}.vb-card__price{font-size:20px}}
+@media (max-width:560px){.vb-ctl__tabs{display:grid;grid-template-columns:1fr 1fr}.vb-ctl__tab{padding:12px 10px;font-size:17px}.vb-ctl__fields{grid-template-columns:1fr}.vb-grid{grid-template-columns:1fr}.vb-ctl__title{font-size:30px}.vbch__cta{display:none}.vb-ctl .vb-ctl__submit{width:100%}.vb-ctl .vb-ctl__reset{width:100%}.vb-cat__bar{flex-direction:column;align-items:flex-start}}
+</style>
+
+<script>
+(function(){
+  function init(){
+    if(window.__soyuzCatBooted)return;
+    window.__soyuzCatBooted=true;
+    var root=document.getElementById('vb-cat-root');
+    if(!root)return;
+
+    var GH='https://raw.githubusercontent.com/ludmilakulesova158-hue/soyuz-catalog/main/data/';
+    var CD='https://cdn.jsdelivr.net/gh/ludmilakulesova158-hue/soyuz-catalog@main/data/';
+    var LS='soyuz-cat-v1';
+    var TTL=30*60*1000;
+    var PAGE=24;
+
+    var grid=root.querySelector('#vb-grid');
+    var countEl=root.querySelector('#vb-ctl-count');
+    var metaEl=root.querySelector('#vb-cat-meta');
+    var staleEl=root.querySelector('#vb-cat-stale');
+    var emptyEl=root.querySelector('#vb-ctl-empty');
+    var emptyText=root.querySelector('#vb-ctl-empty-text');
+    var emptyReset=root.querySelector('#vb-ctl-empty-reset');
+    var moreBtn=root.querySelector('#vb-cat-more');
+    var errEl=root.querySelector('#vb-cat-error');
+    var retryBtn=root.querySelector('#vb-cat-retry');
+    var sortSel=root.querySelector('#vb-cat-sort');
+    var modal=document.getElementById('vb-modal');
+    var modalBody=document.getElementById('vb-modal-body');
+    var lb=document.getElementById('vb-lightbox');
+    var lbImg=document.getElementById('vb-lightbox-img');
+    var lbCount=document.getElementById('vb-lightbox-count');
+
+    var state={tab:'',applied:false,rooms:[],page:1,sort:'fresh'};
+    var cards=[];
+    var meta=null;
+
+    function fmtMoney(v){return String(Math.max(0,Math.round(v))).replace(/\B(?=(\d{3})+(?!\d))/g,'\u00A0');}
+    function trimNum(x){return String(Math.round(x*100)/100).replace('.',',');}
+    function plural(n){var m10=n%10,m100=n%100;if(m10===1&&m100!==11)return 'объект';if(m10>=2&&m10<=4&&(m100<10||m100>=20))return 'объекта';return 'объектов';}
+    function fmtDate(iso){var d=new Date(iso);if(isNaN(d))return '';var p=function(x){return x<10?'0'+x:''+x};return p(d.getDate())+'.'+p(d.getMonth()+1)+', '+p(d.getHours())+':'+p(d.getMinutes());}
+
+    function fetchJSON(url,timeout){
+      return new Promise(function(res,rej){
+        var ctl=new AbortController();
+        var to=setTimeout(function(){ctl.abort();rej(new Error('timeout'));},timeout||8000);
+        fetch(url,{signal:ctl.signal,cache:'no-cache'}).then(function(r){
+          clearTimeout(to);
+          if(!r.ok)throw new Error('HTTP '+r.status);
+          return r.json();
+        }).then(res,function(e){clearTimeout(to);rej(e);});
+      });
+    }
+    function loadCache(){try{var v=JSON.parse(localStorage.getItem(LS)||'null');return v&&v.cards&&v.cards.length?v:null;}catch(e){return null;}}
+    function saveCache(c,m){try{localStorage.setItem(LS,JSON.stringify({t:Date.now(),cards:c,meta:m}));}catch(e){}}
+
+    function showErr(){if(errEl)errEl.hidden=false;metaEl.textContent='Каталог временно недоступен';}
+
+    function boot(){
+      var cached=loadCache();
+      var fresh=cached&&(Date.now()-cached.t)<TTL;
+      if(fresh){cards=cached.cards;meta=cached.meta;render();}
+      else if(cached){cards=cached.cards;meta=cached.meta;render();staleEl.hidden=false;staleEl.textContent='Показана сохранённая версия каталога от '+fmtDate(new Date(cached.t).toISOString())+' — обновляем…';}
+      else{renderSkeleton();}
+      fetchJSON(GH+'cards.json').catch(function(){return fetchJSON(CD+'cards.json');}).then(function(list){
+        return fetchJSON(GH+'meta.json').catch(function(){return fetchJSON(CD+'meta.json').catch(function(){return null;});}).then(function(m){return{list:list,m:m};});
+      }).then(function(r){
+        cards=r.list;meta=r.m;saveCache(cards,meta);
+        staleEl.hidden=true;
+        render();
+      }).catch(function(){
+        if(!cards.length){showErr();if(grid)grid.innerHTML='';}
+        else staleEl.textContent='Не удалось обновить каталог — показана сохранённая версия от '+fmtDate(new Date((loadCache()||{}).t||Date.now()).toISOString())+'.';
+      });
+    }
+
+    function renderSkeleton(){
+      if(!grid)return;
+      var html='';for(var i=0;i<12;i++){
+        html+='<div class="vb-card vb-card--skel"><div class="vb-card__img"></div><div class="vb-card__body"><div class="vb-skel-line" style="width:70%"></div><div class="vb-skel-line" style="width:50%"></div><div class="vb-skel-line" style="width:40%"></div></div></div>';
+      }
+      grid.innerHTML=html;
+    }
+
+    var TYPE_MAP={'квартира':'flat','комната':'room','апартаменты':'apart','студия':'flat','дом':'house','коттедж':'house','таунхаус':'house','часть дома':'house','дача':'dacha','участок':'land','гараж':'commercial','коммерческая':'commercial'};
+    function typeOf(o){return TYPE_MAP[o.cat]||'';}
+
+    var TYPES={
+      sale:[['','Все объекты'],['flat','Квартира'],['room','Комната'],['apart','Апартаменты'],['commercial','Коммерческая недвижимость']],
+      rent:[['','Все объекты'],['flat','Квартира'],['room','Комната'],['commercial','Коммерческая недвижимость']],
+      country:[['','Все объекты'],['house','Дом'],['dacha','Дача'],['land','Участок']],
+      '':[['','Все типы'],['flat','Квартира'],['room','Комната'],['apart','Апартаменты'],['house','Дом'],['dacha','Дача'],['land','Участок'],['commercial','Коммерческая недвижимость']]
+    };
+    var REPAIRS=[['','Любой'],['cosmetic','Косметический'],['needs','Требует ремонта'],['euro','Евроремонт'],['finished','С отделкой'],['design','Дизайнерский']];
+    var form=root.querySelector('#vb-ctl-form');
+    var typeSel=root.querySelector('#vb-ctl-type');
+    var repairSel=root.querySelector('#vb-ctl-repair');
+    var priceNote=root.querySelector('.vb-ctl__price-note');
+    var pills=[].slice.call(root.querySelectorAll('.vb-ctl__pill'));
+    var tabs=[].slice.call(root.querySelectorAll('.vb-ctl__tab'));
+
+    function setOptions(sel,list){if(!sel)return;sel.innerHTML='';list.forEach(function(p){var o=document.createElement('option');o.value=p[0];o.textContent=p[1];sel.appendChild(o);});}
+    setOptions(repairSel,REPAIRS);
+    setOptions(typeSel,TYPES['']);
+
+    function ensureTypes(){
+      if(!typeSel)return;
+      var want=TYPES[state.tab]||TYPES[''];
+      var first=typeSel.options[0];
+      if(first&&first.value===want[0][0]&&typeSel.options.length===want.length)return;
+      var val=typeTouched?typeSel.value:'';
+      setOptions(typeSel,want);
+      if(typeTouched&&val){for(var k=0;k<typeSel.options.length;k++){if(typeSel.options[k].value===val){typeSel.selectedIndex=k;return;}}}
+      typeSel.selectedIndex=0;
+    }
+    if(typeSel&&window.MutationObserver){new MutationObserver(function(){ensureTypes();}).observe(typeSel,{childList:true});}
+    setTimeout(ensureTypes,400);setTimeout(ensureTypes,1200);setTimeout(ensureTypes,2000);
+
+    var typeTouched=false;
+    if(typeSel)typeSel.addEventListener('change',function(){typeTouched=true;});
+
+    var PRICE={
+      sale:{min:0,max:50000000,step:500000,from:0,to:50000000,unit:'',label:'Цена, ₽',money:true,unitShort:'₽'},
+      rent:{min:0,max:100000,step:500,from:0,to:100000,unit:'',label:'Цена, ₽/мес',money:true,unitShort:'₽/мес'}
+    };
+    var sliders={};
+
+    function clamp(v,a,b){return Math.min(Math.max(v,a),b);}
+    function round(v){return Math.round(v*10)/10;}
+    function digits(v){return String(v==null?'':v).replace(/[^\d]/g,'').replace(/^0+(?=\d)/,'');}
+    function readMoney(inp){var d=inp?digits(inp.value):'';return d===''?null:parseFloat(d);}
+    function shortMoney(v){if(v>=1000000)return trimNum(v/1000000)+' млн';if(v>=1000)return trimNum(v/1000)+' тыс';return String(Math.round(v));}
+
+    [].slice.call(root.querySelectorAll('[data-slider]')).forEach(function(el){
+      var name=el.getAttribute('data-slider');
+      var isMoney=name==='price';
+      var inpMin=el.querySelector('.vb-ctl__input--min');
+      var inpMax=el.querySelector('.vb-ctl__input--max');
+      var bar=el.querySelector('.vb-ctl__bar');
+      var control=el.parentElement;
+      var vals=control?control.querySelector('.vb-ctl__values'):null;
+      var outFrom=root.querySelector('[data-out="'+name+'-from"]');
+      var outTo=root.querySelector('[data-out="'+name+'-to"]');
+      if(outFrom)outFrom.style.display='none';
+      if(outTo)outTo.style.display='none';
+
+      if(vals){
+        var it=isMoney?'text':'number';
+        var im=isMoney?'numeric':'decimal';
+        var cls=isMoney?'vb-ctl__num vb-ctl__num--money':'vb-ctl__num';
+        vals.innerHTML='<label class="'+cls+'"><span class="vb-ctl__num-cap">от</span><input class="vb-ctl__num-in" type="'+it+'" inputmode="'+im+'" autocomplete="off" aria-label="от"><span class="vb-ctl__num-unit"></span></label><label class="'+cls+'"><span class="vb-ctl__num-cap">до</span><input class="vb-ctl__num-in" type="'+it+'" inputmode="'+im+'" autocomplete="off" aria-label="до"><span class="vb-ctl__num-unit"></span></label>';
+      }
+      var numMin=vals?vals.querySelectorAll('.vb-ctl__num-in')[0]:null;
+      var numMax=vals?vals.querySelectorAll('.vb-ctl__num-in')[1]:null;
+      var units=vals?vals.querySelectorAll('.vb-ctl__num-unit'):[];
+
+      var cfg={min:parseFloat(el.getAttribute('data-min')),max:parseFloat(el.getAttribute('data-max')),step:parseFloat(el.getAttribute('data-step')),from:parseFloat(el.getAttribute('data-from')),to:parseFloat(el.getAttribute('data-to')),unit:name==='floor'?'':'м²',label:'',money:false,unitShort:''};
+      if(name==='price')cfg=PRICE.sale;
+
+      function bounds(){
+        if(cfg.money){var a=readMoney(numMin),b=readMoney(numMax);return [a==null?cfg.min:a,b==null?cfg.max:b];}
+        var ra=parseFloat(inpMin.value),rb=parseFloat(inpMax.value);
+        return [isNaN(ra)?cfg.min:ra,isNaN(rb)?cfg.max:rb];
+      }
+      function draw(){
+        var ab=bounds(),a=ab[0],b=ab[1];
+        var span=(cfg.max-cfg.min)||1;
+        bar.style.left=((a-cfg.min)/span*100)+'%';
+        bar.style.width=Math.max(0,((b-a)/span*100))+'%';
+      }
+      function updateNote(){
+        if(!cfg.money||!priceNote||!numMin||!numMax)return;
+        var a=readMoney(numMin),b=readMoney(numMax);
+        if(a==null)a=cfg.min;if(b==null)b=cfg.max;
+        var low=a>cfg.min,high=b<cfg.max,text='';
+        if(low&&high)text=shortMoney(a)+'–'+shortMoney(b)+' '+cfg.unitShort;
+        else if(low)text='от '+shortMoney(a)+' '+cfg.unitShort;
+        else if(high)text='до '+shortMoney(b)+' '+cfg.unitShort;
+        priceNote.textContent=text;
+      }
+      function paint(){
+        if(cfg.money){var ab=bounds();if(numMin)numMin.value=fmtMoney(ab[0]);if(numMax)numMax.value=fmtMoney(ab[1]);}
+        else{if(numMin)numMin.value=round(parseFloat(inpMin.value));if(numMax)numMax.value=round(parseFloat(inpMax.value));}
+        [].forEach.call(units,function(u){u.textContent=cfg.unit;});
+        draw();updateNote();
+      }
+      function setMin(v){
+        if(cfg.money){
+          var raw=numMin?digits(numMin.value):'';
+          if(raw===''){inpMin.value=cfg.min;draw();updateNote();return;}
+          var m=clamp(parseFloat(raw),cfg.min,cfg.max);
+          if(numMin)numMin.value=fmtMoney(m);
+          inpMin.value=m;draw();updateNote();return;
+        }
+        v=Number(String(v).replace(',', '.'));
+        if(isNaN(v))return;
+        var b=parseFloat(inpMax.value);v=clamp(v,cfg.min,b);
+        inpMin.value=v;if(numMin)numMin.value=round(v);draw();
+      }
+      function setMax(v){
+        if(cfg.money){
+          var raw=numMax?digits(numMax.value):'';
+          if(raw===''){inpMax.value=cfg.max;draw();updateNote();return;}
+          var m=clamp(parseFloat(raw),cfg.min,cfg.max);
+          if(numMax)numMax.value=fmtMoney(m);
+          inpMax.value=m;draw();updateNote();return;
+        }
+        v=Number(String(v).replace(',', '.'));
+        if(isNaN(v))return;
+        var a=parseFloat(inpMin.value);v=clamp(v,a,cfg.max);
+        inpMax.value=v;if(numMax)numMax.value=round(v);draw();
+      }
+      function normalizeMoney(who){
+        if(!cfg.money)return;
+        var a=readMoney(numMin),b=readMoney(numMax);
+        if(a==null||isNaN(a))a=cfg.min;
+        if(b==null||isNaN(b))b=cfg.max;
+        a=clamp(a,cfg.min,cfg.max);b=clamp(b,cfg.min,cfg.max);
+        if(a>b){if(who==='min')b=a;else a=b;}
+        if(numMin)numMin.value=fmtMoney(a);
+        if(numMax)numMax.value=fmtMoney(b);
+        inpMin.value=a;inpMax.value=b;
+        draw();updateNote();
+      }
+      function applyConfig(next){
+        cfg=next;
+        [inpMin,inpMax].forEach(function(inp){inp.setAttribute('min',cfg.min);inp.setAttribute('max',cfg.max);inp.setAttribute('step',cfg.step);});
+        if(numMin){numMin.setAttribute('min',cfg.min);numMin.setAttribute('max',cfg.max);numMin.setAttribute('step',cfg.step);}
+        if(numMax){numMax.setAttribute('min',cfg.min);numMax.setAttribute('max',cfg.max);numMax.setAttribute('step',cfg.step);}
+        inpMin.value=cfg.from;inpMax.value=cfg.to;
+        if(cfg.money){if(numMin)numMin.value=fmtMoney(cfg.from);if(numMax)numMax.value=fmtMoney(cfg.to);}
+        else{if(numMin)numMin.value=round(cfg.from);if(numMax)numMax.value=round(cfg.to);}
+        var field=el.closest?el.closest('.vb-ctl__field'):null;
+        var labelText=field?field.querySelector('.vb-ctl__label-text'):null;
+        var label=field?field.querySelector('.vb-ctl__label'):null;
+        if(cfg.label){if(labelText)labelText.textContent=cfg.label;else if(label)label.textContent=cfg.label;}
+        paint();
+      }
+      inpMin.addEventListener('input',function(){if(cfg.money){if(numMin)numMin.value=fmtMoney(parseFloat(inpMin.value)||0);draw();updateNote();}else setMin(inpMin.value);});
+      inpMax.addEventListener('input',function(){if(cfg.money){if(numMax)numMax.value=fmtMoney(parseFloat(inpMax.value)||0);draw();updateNote();}else setMax(inpMax.value);});
+      if(numMin){numMin.addEventListener('input',function(){setMin(numMin.value);});numMin.addEventListener('change',function(){if(cfg.money)normalizeMoney('min');else setMin(numMin.value);});numMin.addEventListener('blur',function(){if(cfg.money)normalizeMoney('min');else setMin(numMin.value);});}
+      if(numMax){numMax.addEventListener('input',function(){setMax(numMax.value);});numMax.addEventListener('change',function(){if(cfg.money)normalizeMoney('max');else setMax(numMax.value);});numMax.addEventListener('blur',function(){if(cfg.money)normalizeMoney('max');else setMax(numMax.value);});}
+      sliders[name]={setConfig:applyConfig,reset:function(){inpMin.value=cfg.from;inpMax.value=cfg.to;paint();},commit:function(){if(cfg.money)normalizeMoney();else{if(numMin)setMin(numMin.value);if(numMax)setMax(numMax.value);}},values:function(){if(cfg.money)return bounds();return [parseFloat(inpMin.value),parseFloat(inpMax.value)];}};
+      applyConfig(cfg);
+    });
+
+    function applyPriceMode(){if(sliders.price)sliders.price.setConfig(state.tab==='rent'?PRICE.rent:PRICE.sale);}
+    function setTab(tab){
+      if(tab==='new'){window.open('https://soyuz-novostrojki.ru/','_blank','noopener');return;}
+      state.tab=state.tab===tab?'':tab;
+      tabs.forEach(function(el){
+        var active=state.tab!==''&&el.getAttribute('data-tab')===state.tab;
+        el.classList.toggle('vb-ctl__tab--active',active);
+        el.setAttribute('aria-pressed',active?'true':'false');
+      });
+      setOptions(typeSel,TYPES[state.tab]||TYPES['']);
+      if(typeSel)typeSel.selectedIndex=0;
+      typeTouched=false;
+      applyPriceMode();
+      if(state.applied){state.page=1;render();}
+    }
+    tabs.forEach(function(t){
+      t.addEventListener('click',function(e){
+        var v=t.getAttribute('data-tab');
+        if(v==='new'){e.preventDefault();e.stopPropagation();}
+        setTab(v);
+      });
+    });
+
+    function readFilters(){
+      var f={tab:state.tab,type:typeSel?typeSel.value:'',repair:repairSel?repairSel.value:'',rooms:state.rooms.slice()};
+      Object.keys(sliders).forEach(function(k){f[k]=sliders[k].values();});
+      return f;
+    }
+    function repairMatch(value,text){
+      if(!value)return true;
+      if(value==='cosmetic')return /косм/.test(text);
+      if(value==='needs')return /требу/.test(text);
+      if(value==='euro')return /евро/.test(text);
+      if(value==='finished')return /отделк/.test(text);
+      if(value==='design')return /дизайн/.test(text);
+      return true;
+    }
+    function matches(f,o){
+      var t=typeOf(o);
+      if(f.tab==='sale'){if(o.type!=='продажа')return false;if(['flat','room','apart','commercial'].indexOf(t)===-1)return false;}
+      if(f.tab==='rent'){if(o.type!=='аренда')return false;if(['flat','room','commercial'].indexOf(t)===-1)return false;}
+      if(f.tab==='country'){if(o.type!=='продажа')return false;if(['house','dacha','land'].indexOf(t)===-1)return false;}
+      if(f.type&&t!==f.type)return false;
+      if(f.rooms.length){
+        if(o.rooms==null)return false;
+        var ok=f.rooms.some(function(r){
+          if(r==='studio')return o.studio||o.rooms===0;
+          if(r==='4')return o.rooms>=4;
+          return o.rooms===parseInt(r,10);
+        });
+        if(!ok)return false;
+      }
+      if(o.price!=null&&(o.price<f.price[0]||o.price>f.price[1]))return false;
+      if(o.area!=null&&(o.area<f.area[0]||o.area>f.area[1]))return false;
+      if(o.ak!=null&&(o.ak<f.kitchen[0]||o.ak>f.kitchen[1]))return false;
+      if(o.floor!=null&&(o.floor<f.floor[0]||o.floor>f.floor[1]))return false;
+      if(!repairMatch(f.repair,o.renov||''))return false;
+      return true;
+    }
+
+    function sortList(list){
+      var s=state.sort;
+      if(s==='asc')list.sort(function(a,b){return (a.price==null)-(b.price==null)||((a.price||0)-(b.price||0));});
+      else if(s==='desc')list.sort(function(a,b){return (a.price==null)-(b.price==null)||((b.price||0)-(a.price||0));});
+      else list.sort(function(a,b){return (a.type===b.type?(b.upd||'').localeCompare(a.upd||''):(a.type==='продажа'?-1:1));});
+      return list;
+    }
+
+    function cardNode(o){
+      var a=document.createElement('a');
+      a.className='vb-card';
+      a.href='/object?id='+encodeURIComponent(o.id);
+      var iw=document.createElement('div');iw.className='vb-card__img';
+      if(o.ph){var img=document.createElement('img');img.loading='lazy';img.alt=o.title;iw.appendChild(img);img.src=o.ph;}
+      var badge=document.createElement('span');badge.className='vb-card__badge '+(o.type==='аренда'?'vb-card__badge--rent':'vb-card__badge--sale');badge.textContent=o.type==='аренда'?'Аренда':'Продажа';iw.appendChild(badge);
+      a.appendChild(iw);
+      var body=document.createElement('div');body.className='vb-card__body';
+      var h=document.createElement('p');h.className='vb-card__title';h.textContent=o.title;body.appendChild(h);
+      var ad=document.createElement('p');ad.className='vb-card__addr';ad.textContent=[o.district,o.addr].filter(Boolean).join(' · ');body.appendChild(ad);
+      var meta=document.createElement('p');meta.className='vb-card__meta';
+      var parts=[];
+      if(o.studio)parts.push('Студия');else if(o.rooms)parts.push(o.rooms+'-комн.');
+      if(o.area!=null)parts.push(trimNum(o.area)+' м²');
+      if(o.floor!=null&&o.floors!=null)parts.push(o.floor+'/'+o.floors+' эт.');
+      if(o.renov)parts.push(o.renov.charAt(0).toUpperCase()+o.renov.slice(1));
+      parts.forEach(function(p){var s=document.createElement('span');s.textContent=p;meta.appendChild(s);});
+      body.appendChild(meta);
+      var foot=document.createElement('div');foot.className='vb-card__foot';
+      var pr=document.createElement('span');pr.className='vb-card__price';
+      if(o.price!=null){pr.textContent=fmtMoney(o.price)+' ₽';}else{pr.textContent='Цена по запросу';pr.style.fontSize='16px';}
+      foot.appendChild(pr);
+      var right=document.createElement('span');right.className=(o.type==='аренда'?'vb-card__per':'vb-card__more-link');
+      right.textContent=o.type==='аренда'?'в месяц':'Подробнее →';
+      foot.appendChild(right);
+      body.appendChild(foot);
+      a.appendChild(body);
+      return a;
+    }
+
+    function render(){
+      if(!cards.length)return;
+      var f=state.applied?readFilters():null;
+      var list=cards.slice();
+      if(f)list=list.filter(function(o){return matches(f,o);});
+      sortList(list);
+      var total=list.length;
+      var shown=Math.min(state.page*PAGE,total);
+      if(grid){
+        grid.innerHTML='';
+        for(var i=0;i<shown;i++)grid.appendChild(cardNode(list[i]));
+      }
+      if(countEl){
+        countEl.textContent=state.applied?('Найдено '+total+' '+plural(total)):('Показано '+shown+' из '+total+' '+plural(total));
+      }
+      if(moreBtn){moreBtn.hidden=shown>=total;var rest=total-shown;if(shown<total)moreBtn.textContent='Показать ещё'+(rest?(' ('+rest+')'):'');}
+      if(emptyEl)emptyEl.hidden=total>0;
+      if(total===0&&emptyText)emptyText.textContent='По этим условиям объектов не найдено. Попробуйте изменить фильтры.';
+      if(metaEl){
+        var base=(meta&&meta.generated)?(' · обновлено '+fmtDate(meta.generated)):'';
+        metaEl.textContent=(total+' '+plural(total)+' в базе'+(meta?(' · продажа '+meta.sale+' / аренда '+meta.rent):''))+base;
+      }
+    }
+
+    pills.forEach(function(p){
+      p.addEventListener('click',function(){
+        var v=p.getAttribute('data-rooms');
+        var i=state.rooms.indexOf(v);
+        if(i>=0)state.rooms.splice(i,1);else state.rooms.push(v);
+        var on=state.rooms.indexOf(v)>=0;
+        p.classList.toggle('vb-ctl__pill--active',on);
+        p.setAttribute('aria-pressed',on?'true':'false');
+      });
+    });
+
+    if(form){
+      form.addEventListener('submit',function(e){
+        e.preventDefault();
+        Object.keys(sliders).forEach(function(k){sliders[k].commit();});
+        state.applied=true;state.page=1;
+        render();
+        var g=root.querySelector('.vb-cat__bar');
+        if(g)g.scrollIntoView({behavior:'smooth',block:'start'});
+      });
+    }
+    function doReset(){
+      Object.keys(sliders).forEach(function(k){sliders[k].reset();});
+      state.rooms=[];state.page=1;
+      pills.forEach(function(p){p.classList.remove('vb-ctl__pill--active');p.setAttribute('aria-pressed','false');});
+      state.tab='';state.applied=false;
+      tabs.forEach(function(t){t.classList.remove('vb-ctl__tab--active');t.setAttribute('aria-pressed','false');});
+      setOptions(typeSel,TYPES['']);if(typeSel)typeSel.selectedIndex=0;
+      if(repairSel)repairSel.value='';
+      applyPriceMode();
+      render();
+    }
+    if(emptyReset)emptyReset.addEventListener('click',doReset);
+    var resetTop=root.querySelector('#vb-ctl-reset-top');
+    if(resetTop)resetTop.addEventListener('click',doReset);
+    if(moreBtn){moreBtn.addEventListener('click',function(){state.page++;render();});}
+    if(sortSel){sortSel.addEventListener('change',function(){state.sort=sortSel.value;state.page=1;render();});}
+    if(retryBtn){retryBtn.addEventListener('click',function(){errEl.hidden=true;renderSkeleton();boot();});}
+
+    function openModal(id){
+      modal.hidden=false;
+      document.body.style.overflow='hidden';
+      modalBody.innerHTML='<div class="vb-modal__info"><p class="vb-modal__addr">Загружаем…</p></div>';
+      fetchJSON(GH+'objects/'+id+'.json').catch(function(){return fetchJSON(CD+'objects/'+id+'.json');}).then(function(o){
+        lbPhotos=(o&&o.photos)||[];
+        lbIndex=0;
+        modalBody.innerHTML='';
+        var gal=document.createElement('div');gal.className='vb-modal__gal';
+        (o.photos||[]).slice(0,10).forEach(function(u){var im=document.createElement('img');im.loading='lazy';im.alt='';gal.appendChild(im);im.src=u;});
+        modalBody.appendChild(gal);
+        var info=document.createElement('div');info.className='vb-modal__info';
+        var h=document.createElement('p');h.className='vb-modal__title';h.textContent=o.title;info.appendChild(h);
+        var ad=document.createElement('p');ad.className='vb-modal__addr';ad.textContent=[o.district,o.addr].filter(Boolean).join(' · ');info.appendChild(ad);
+        var pr=document.createElement('p');pr.className='vb-modal__price';
+        if(o.price!=null){pr.textContent=fmtMoney(o.price)+' ₽'+(o.type==='аренда'?' / мес':'');}else{pr.textContent='Цена по запросу';pr.style.fontSize='20px';}
+        info.appendChild(pr);
+        var mt=document.createElement('p');mt.className='vb-modal__meta';
+        var rows=[];
+        if(o.area!=null)rows.push('Общая площадь: '+trimNum(o.area)+' м²');
+        if(o.area_living!=null)rows.push('Жилая: '+trimNum(o.area_living)+' м²');
+        if(o.area_kitchen!=null)rows.push('Кухня: '+trimNum(o.area_kitchen)+' м²');
+        if(o.floor!=null&&o.floors!=null)rows.push('Этаж: '+o.floor+' из '+o.floors);
+        if(o.house&&o.house.year)rows.push('Год постройки: '+o.house.year);
+        if(o.house&&o.house.type)rows.push('Тип дома: '+o.house.type);
+        if(o.renov)rows.push('Ремонт: '+o.renov);
+        if(o.balcony)rows.push('Балкон/лоджия: '+o.balcony);
+        if(o.mortgage)rows.push('Ипотека: '+o.mortgage);
+        rows.forEach(function(r2){var s=document.createElement('span');s.style.display='block';s.textContent=r2;mt.appendChild(s);});
+        info.appendChild(mt);
+        if(o.agent&&o.agent.name){
+          var ag=document.createElement('div');ag.className='vb-modal__agent';
+          if(o.agent.photo){var ap=document.createElement('img');ap.loading='lazy';ag.appendChild(ap);ap.src=o.agent.photo;}
+          var aw=document.createElement('div');
+          var an=document.createElement('div');an.className='vb-modal__agent-name';an.textContent=o.agent.name;aw.appendChild(an);
+          if(o.agent.phone){var at=document.createElement('a');at.className='vb-modal__agent-tel';at.href='tel:'+o.agent.phone.replace(/[^\d+]/g,'');at.textContent=o.agent.phone.replace(/^(\+\d)(\d{3})(\d{3})(\d{2})(\d{2})$/,'$1 $2 $3-$4-$5');aw.appendChild(at);}
+          ag.appendChild(aw);info.appendChild(ag);
+        }
+        var nt=document.createElement('p');nt.className='vb-modal__note';nt.textContent='Предпросмотр карточки — фото и основные характеристики объекта.';
+        info.appendChild(nt);
+        modalBody.appendChild(info);
+      }).catch(function(){modalBody.innerHTML='<div class="vb-modal__info"><p class="vb-modal__title">Не удалось загрузить объект</p></div>';});
+    }
+    function closeModal(){modal.hidden=true;lb.hidden=true;document.body.style.overflow='';}
+
+    var lbPhotos=[];
+    var lbIndex=0;
+    var lbTX=null;
+    function lbShow(){
+      if(!lbPhotos.length)return;
+      lbImg.src=lbPhotos[lbIndex];
+      lbCount.textContent=(lbIndex+1)+' / '+lbPhotos.length;
+      lb.hidden=false;
+    }
+    function lbOpen(photos,idx){
+      lbPhotos=photos||[];
+      if(!lbPhotos.length)return;
+      lbIndex=Math.max(0,Math.min(idx||0,lbPhotos.length-1));
+      lbShow();
+    }
+    function lbClose(){lb.hidden=true;lbImg.src='';}
+    function lbStep(d){
+      if(!lbPhotos.length)return;
+      lbIndex=(lbIndex+d+lbPhotos.length)%lbPhotos.length;
+      lbShow();
+    }
+    lb.addEventListener('touchstart',function(e){if(e.touches.length===1)lbTX=e.touches[0].clientX;},{passive:true});
+    lb.addEventListener('touchend',function(e){
+      if(lbTX==null)return;
+      var t=e.changedTouches[0];
+      if(!t)return;
+      var d=t.clientX-lbTX;
+      lbTX=null;
+      if(Math.abs(d)>40)lbStep(d<0?1:-1);
+    },{passive:true});
+    document.addEventListener('keydown',function(e){
+      if(!lb.hidden){
+        if(e.key==='Escape'){lbClose();return;}
+        if(e.key==='ArrowLeft'){lbStep(-1);return;}
+        if(e.key==='ArrowRight'){lbStep(1);return;}
+      }
+      if(e.key==='Escape'&&!modal.hidden)closeModal();
+    });
+    var lbPhotos=[];
+    var lbIndex=0;
+    var lbTX=null;
+    function lbShow(){
+      if(!lbPhotos.length)return;
+      lbImg.src=lbPhotos[lbIndex];
+      lbCount.textContent=(lbIndex+1)+' / '+lbPhotos.length;
+      lb.hidden=false;
+    }
+    function lbOpen(photos,idx){
+      lbPhotos=photos||[];
+      if(!lbPhotos.length)return;
+      lbIndex=Math.max(0,Math.min(idx||0,lbPhotos.length-1));
+      lbShow();
+    }
+    function lbClose(){lb.hidden=true;lbImg.src='';}
+    function lbStep(d){
+      if(!lbPhotos.length)return;
+      lbIndex=(lbIndex+d+lbPhotos.length)%lbPhotos.length;
+      lbShow();
+    }
+    lb.addEventListener('touchstart',function(e){if(e.touches.length===1)lbTX=e.touches[0].clientX;},{passive:true});
+    lb.addEventListener('touchend',function(e){
+      if(lbTX==null)return;
+      var t=e.changedTouches[0];
+      if(!t)return;
+      var d=t.clientX-lbTX;
+      lbTX=null;
+      if(Math.abs(d)>40)lbStep(d<0?1:-1);
+    },{passive:true});
+    document.addEventListener('click',function(e){
+      if(e.target.closest('#vb-modal [data-close]')){closeModal();return;}
+      var im=e.target.closest('.vb-modal__gal img');
+      if(im){
+        var src=im.getAttribute('src')||'';
+        var idx=lbPhotos.indexOf(src);
+        if(idx<0)idx=0;
+        lbOpen(lbPhotos,idx);
+        return;
+      }
+      if(!e.target.closest('#vb-lightbox'))return;
+      if(e.target.closest('[data-lb-close]')){lbClose();return;}
+      if(e.target.closest('.vb-lightbox__nav--prev')){lbStep(-1);return;}
+      if(e.target.closest('.vb-lightbox__nav--next')){lbStep(1);return;}
+    });
+
+    grid.addEventListener('click',function(e){
+      var a=e.target.closest('.vb-card');
+      if(!a||a.classList.contains('vb-card--skel'))return;
+      e.preventDefault();
+      var id='';try{id=decodeURIComponent((a.getAttribute('href')||'').split('id=')[1]||'');}catch(err){}
+      if(id)openModal(id);
+    });
+
+    boot();
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
+  else init();
+})();
+</script>

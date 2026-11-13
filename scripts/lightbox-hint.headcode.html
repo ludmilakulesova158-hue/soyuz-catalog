@@ -1,0 +1,41 @@
+<style>
+/* lightbox: top chevron buttons on mobile, side nav only on desktop */
+html body .vb-lightbox__stage{position:relative;z-index:1;display:flex;flex-direction:column;align-items:flex-end;gap:12px;max-width:92vw}
+html body .vb-lightbox__hint{display:none;align-items:center;gap:8px;padding-right:2px}
+html body .vb-lightbox__hint-btn{display:flex;align-items:center;justify-content:center;width:46px;height:46px;margin:0;padding:0;border:0;border-radius:999px;background:transparent;color:rgba(255,255,255,.92);font-family:var(--t-text-font);font-size:34px;font-weight:400;line-height:1;cursor:pointer;text-shadow:0 1px 8px rgba(0,0,0,.55);-webkit-tap-highlight-color:transparent;transition:opacity .15s ease,transform .15s ease}
+html body .vb-lightbox__hint-btn:active{transform:scale(.92);opacity:.75}
+html body .vb-lightbox__hint-btn:focus-visible{outline:2px solid rgba(255,255,255,.8);outline-offset:2px}
+html body .vb-lightbox__img{max-width:100%!important;max-height:82vh!important}
+@media (max-width:560px){
+  html body .vb-lightbox__hint{display:flex}
+  html body .vb-lightbox__nav{display:none!important}
+  html body .vb-lightbox__img{max-height:78vh!important}
+}
+</style>
+<script>
+(function(){
+  function wrap(){
+    var lb=document.getElementById('vb-lightbox');
+    var img=document.getElementById('vb-lightbox-img');
+    if(!lb||!img||lb.querySelector('.vb-lightbox__stage'))return;
+    var stage=document.createElement('div');
+    stage.className='vb-lightbox__stage';
+    img.parentNode.insertBefore(stage,img);
+    var hint=document.createElement('div');
+    hint.className='vb-lightbox__hint';
+    hint.innerHTML='<button type="button" class="vb-lightbox__hint-btn" data-hint="prev" aria-label="Предыдущее фото">\u2039</button><button type="button" class="vb-lightbox__hint-btn" data-hint="next" aria-label="Следующее фото">\u203A</button>';
+    hint.addEventListener('click',function(e){
+      var b=e.target.closest('[data-hint]');
+      if(!b)return;
+      e.preventDefault();
+      var nav=lb.querySelector(b.getAttribute('data-hint')==='prev'?'.vb-lightbox__nav--prev':'.vb-lightbox__nav--next');
+      if(nav)nav.click();
+    });
+    stage.appendChild(hint);
+    stage.appendChild(img);
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',wrap);
+  else wrap();
+  window.addEventListener('load',function(){setTimeout(wrap,400);setTimeout(wrap,1500);});
+})();
+</script>

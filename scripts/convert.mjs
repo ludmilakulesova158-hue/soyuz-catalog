@@ -174,6 +174,30 @@ function parseOffer(attrs, body) {
 }
 
 // ---------- сборка ----------
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+async function fetchFeed(url) {
+  const delays = [0, 5000, 15000, 30000];
+  let lastErr;
+  for (let i = 0; i < delays.length; i++) {
+    if (delays[i]) await sleep(delays[i]);
+    try {
+      const res = await fetch(url, {
+        headers: { 'user-agent': 'soyuz-catalog-bot/1.0' },
+        signal: AbortSignal.timeout(30000),
+      });
+      if (!res.ok) throw new Error(`feed HTTP ${res.status}`);
+      const text = await res.text();
+      if (!text || text.length < 1000) throw new Error(`feed too small (${text.length} bytes)`);
+      return text;
+    } catch (e) {
+      lastErr = e;
+      console.log(`feed attempt ${i + 1}/${delays.length} failed: ${e.message}`);
+    }
+  }
+  throw lastErr || new Error('feed fetch failed');
+}
+
 async function main() {
   let xml;
   const fileArg = process.argv.indexOf('--file');
@@ -181,9 +205,7 @@ async function main() {
     xml = fs.readFileSync(process.argv[fileArg + 1], 'utf8');
     console.log('source: local file', process.argv[fileArg + 1]);
   } else {
-    const res = await fetch(FEED_URL, { headers: { 'user-agent': 'soyuz-catalog-bot/1.0' } });
-    if (!res.ok) throw new Error(`feed HTTP ${res.status}`);
-    xml = await res.text();
+    xml = await fetchFeed(FEED_URL);
     console.log('source:', FEED_URL, `(${(xml.length / 1048576).toFixed(2)} MB)`);
   }
 
