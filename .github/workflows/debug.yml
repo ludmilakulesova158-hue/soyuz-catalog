@@ -1,0 +1,25 @@
+name: debug-feed
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Probe feed
+        env:
+          FEED_URL: https://joywork.ru/feeds/14794.xml
+        run: |
+          set -x
+          curl -sS -o /tmp/feed.xml -w "curl: HTTP %{http_code} size %{size_download} time %{time_total}\n" --max-time 90 "$FEED_URL" || echo "curl exit $?"
+          node -e "try{const s=require('fs').readFileSync('/tmp/feed.xml','utf8');console.log('bytes',s.length,'offers',(s.match(/<offer\b/g)||[]).length)}catch(e){console.log('no file',e.message)}"
+          echo "--- convert ---"
+          node scripts/convert.mjs; echo "convert exit $?"
