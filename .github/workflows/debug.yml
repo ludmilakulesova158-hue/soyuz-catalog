@@ -1,0 +1,28 @@
+name: debug-feed
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Probe each source
+        run: |
+          F=https://joywork.ru/feeds/14794.xml
+          echo "== direct =="
+          curl -sS -o /tmp/a.xml -w "HTTP %{http_code} size %{size_download} time %{time_total}\n" --max-time 40 "$F" || echo "curl exit $?"
+          echo "== translate.goog =="
+          curl -sS -o /tmp/b.xml -w "HTTP %{http_code} size %{size_download} time %{time_total}\n" --max-time 60 "https://joywork-ru.translate.goog/feeds/14794.xml?_x_tr_sl=auto&_x_tr_tl=ru&_x_tr_hl=ru" || echo "curl exit $?"
+          echo "== allorigins =="
+          curl -sS -o /tmp/c.xml -w "HTTP %{http_code} size %{size_download} time %{time_total}\n" --max-time 60 "https://api.allorigins.win/raw?url=https%3A%2F%2Fjoywork.ru%2Ffeeds%2F14794.xml" || echo "curl exit $?"
+          node -e "['a','b','c'].forEach(n=>{try{const s=require('fs').readFileSync('/tmp/'+n+'.xml','utf8');console.log(n,'bytes',s.length,'offers',(s.match(/<offer\b/g)||[]).length,'head',s.slice(0,40).replace(/\n/g,' '))}catch(e){console.log(n,'missing')}})"
+          echo "== convert via cascade =="
+          node scripts/convert.mjs; echo "convert exit $?"
