@@ -374,7 +374,7 @@ html body .vb-ctl__num--money .vb-ctl__num-in:focus{border-color:var(--ctl-burg)
     var GH='https://raw.githubusercontent.com/ludmilakulesova158-hue/soyuz-catalog/main/data/';
     var CD='https://cdn.jsdelivr.net/gh/ludmilakulesova158-hue/soyuz-catalog@main/data/';
     var LS='soyuz-cat-v1';
-    var TTL=30*60*1000;
+    var TTL=3*60*1000;
     var MOBILE_MQ=window.matchMedia?window.matchMedia('(max-width:560px)'):null;
     function perPage(){return (MOBILE_MQ&&MOBILE_MQ.matches)?15:20;}
 
@@ -426,16 +426,36 @@ html body .vb-ctl__num--money .vb-ctl__num-in:focus{border-color:var(--ctl-burg)
       if(fresh){cards=cached.cards;meta=cached.meta;render();}
       else if(cached){cards=cached.cards;meta=cached.meta;render();staleEl.hidden=false;staleEl.textContent='Показана сохранённая версия каталога от '+fmtDate(new Date(cached.t).toISOString())+' — обновляем…';}
       else{renderSkeleton();}
-      fetchJSON(GH+'cards.json').catch(function(){return fetchJSON(CD+'cards.json');}).then(function(list){
-        return fetchJSON(GH+'meta.json').catch(function(){return fetchJSON(CD+'meta.json').catch(function(){return null;});}).then(function(m){return{list:list,m:m};});
-      }).then(function(r){
-        cards=r.list;meta=r.m;saveCache(cards,meta);
-        staleEl.hidden=true;
-        render();
+      revalidate(true);
+      if(REVAL_TIMER){clearInterval(REVAL_TIMER);}
+      REVAL_TIMER=setInterval(function(){if(!document.hidden)revalidate(false);},REVAL_MS);
+      document.addEventListener('visibilitychange',function(){if(!document.hidden)revalidate(false);});
+      window.addEventListener('focus',function(){revalidate(false);});
+    }
+
+    var REVAL_MS=3*60*1000;
+    var REVAL_TIMER=null;
+    var revalBusy=false;
+    function verParam(){return meta&&meta.generated?('?v='+encodeURIComponent(meta.generated)):'';}
+    function revalidate(first){
+      if(revalBusy)return;
+      revalBusy=true;
+      var ts=Date.now();
+      fetchJSON(GH+'meta.json?ts='+ts).catch(function(){return fetchJSON(CD+'meta.json?ts='+ts);}).then(function(m){
+        if(!m||!m.generated)throw new Error('no meta');
+        var cached=loadCache();
+        var changed=!cached||!cached.meta||cached.meta.generated!==m.generated||!cards.length;
+        if(!changed){meta=m;if(cached){cached.meta=m;cached.t=Date.now();try{localStorage.setItem(LS,JSON.stringify(cached));}catch(e){}}staleEl.hidden=true;return null;}
+        return fetchJSON(GH+'cards.json?v='+encodeURIComponent(m.generated)).catch(function(){return fetchJSON(CD+'cards.json?v='+encodeURIComponent(m.generated));}).then(function(list){
+          cards=list;meta=m;saveCache(cards,meta);
+          staleEl.hidden=true;
+          render();
+          return null;
+        });
       }).catch(function(){
         if(!cards.length){showErr();if(grid)grid.innerHTML='';}
-        else staleEl.textContent='Не удалось обновить каталог — показана сохранённая версия от '+fmtDate(new Date((loadCache()||{}).t||Date.now()).toISOString())+'.';
-      });
+        else if(first)staleEl.textContent='Не удалось обновить каталог — показана сохранённая версия от '+fmtDate(new Date((loadCache()||{}).t||Date.now()).toISOString())+'.';
+      }).then(function(){revalBusy=false;});
     }
 
     function renderSkeleton(){
@@ -779,7 +799,7 @@ html body .vb-ctl__num--money .vb-ctl__num-in:focus{border-color:var(--ctl-burg)
       modal.hidden=false;
       document.body.style.overflow='hidden';
       modalBody.innerHTML='<div class="vb-modal__info"><p class="vb-modal__addr">Загружаем…</p></div>';
-      fetchJSON(GH+'objects/'+id+'.json').catch(function(){return fetchJSON(CD+'objects/'+id+'.json');}).then(function(o){
+      fetchJSON(GH+'objects/'+id+'.json'+verParam()).catch(function(){return fetchJSON(CD+'objects/'+id+'.json'+verParam());}).then(function(o){
         lbPhotos=(o&&o.photos)||[];
         lbIndex=0;
         modalBody.innerHTML='';

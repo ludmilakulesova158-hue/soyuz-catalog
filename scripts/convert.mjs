@@ -197,7 +197,7 @@ function looksLikeFeed(text) {
 
 async function fetchFeed(url) {
   const sources = feedSources(url);
-  const delays = [0, 3000, 8000];
+  const delays = [0, 5000, 20000, 45000];
   let lastErr;
   for (const src of sources) {
     for (let i = 0; i < delays.length; i++) {
@@ -210,8 +210,9 @@ async function fetchFeed(url) {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const text = await res.text();
         if (!looksLikeFeed(text)) throw new Error(`not a feed (${text.length} bytes)`);
+        const lastMod = res.headers.get('last-modified') || '';
         console.log(`feed via: ${src}`);
-        return text;
+        return { text, lastMod };
       } catch (e) {
         lastErr = e;
         console.log(`feed attempt (${src.slice(0, 60)}…) ${i + 1}/${delays.length} failed: ${e.message}`);
@@ -223,12 +224,17 @@ async function fetchFeed(url) {
 
 async function main() {
   let xml;
+  let lastMod = null;
   const fileArg = process.argv.indexOf('--file');
   if (fileArg > -1 && process.argv[fileArg + 1]) {
-    xml = fs.readFileSync(process.argv[fileArg + 1], 'utf8');
-    console.log('source: local file', process.argv[fileArg + 1]);
+    const fp = process.argv[fileArg + 1];
+    xml = fs.readFileSync(fp, 'utf8');
+    lastMod = fs.statSync(fp).mtime.toUTCString();
+    console.log('source: local file', fp);
   } else {
-    xml = await fetchFeed(FEED_URL);
+    const feed = await fetchFeed(FEED_URL);
+    xml = feed.text;
+    lastMod = feed.lastMod;
     console.log('source:', FEED_URL, `(${(xml.length / 1048576).toFixed(2)} MB)`);
   }
 
@@ -271,7 +277,12 @@ async function main() {
   const cats = {};
   for (const o of objects) cats[o.cat] = (cats[o.cat] || 0) + 1;
   const meta = {
-    generated: new Date().toISOString(),
+    // детерминированная метка: generation-date из самого фида (не время конвертации) —
+    // одинаковый фид даёт одинаковые файлы, лишних коммитов и конфликтов роботов нет
+    generated: (xml.match(/<generation-date>([^<]+)<\/generation-date>/)?.[1]
+      && new Date(xml.match(/<generation-date>([^<]+)<\/generation-date>/)[1]).toISOString())
+      || (lastMod && new Date(lastMod).toISOString())
+      || new Date().toISOString(),
     source: fileArg > -1 ? 'local' : FEED_URL,
     count: objects.length,
     sale: objects.filter(o => o.type === 'продажа').length,
