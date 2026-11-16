@@ -192,6 +192,11 @@ async function cmdTriggerCreate(name) {
   console.log('trigger created:', t.id || JSON.stringify(t).slice(0, 300));
 }
 
+async function cmdTriggerDelete(id) {
+  if (!id) throw new Error('нужен ID триггера');
+  const r = await api('DELETE', TRIG_API + '/triggers/v1/triggers/' + id);
+  console.log('delete requested:', JSON.stringify(r).slice(0, 300));
+}
 async function cmdDumpEnv(file) {
   const cur = await activeVersion();
   if (!cur) throw new Error('активная версия не найдена');
@@ -235,6 +240,7 @@ async function main() {
   else if (cmd === 'deploy') await cmdDeploy();
   else if (cmd === 'fn-create') await cmdFnCreate(rest[0] || 'soyuz-catalog');
   else if (cmd === 'trigger-create') await cmdTriggerCreate(rest[0] || 'soyuz-catalog-timer');
+  else if (cmd === 'trigger-delete') await cmdTriggerDelete(rest[0] || TRIGGER_ID);
   else if (cmd === 'dump-env') await cmdDumpEnv(rest[0] || 'env.json');
   else if (cmd === 'folder') await cmdFolder(rest[0] || '');
   else if (cmd === 'clouds') await cmdClouds();
